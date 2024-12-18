@@ -6,13 +6,13 @@
     <title>Submitted Details</title>
     <link rel="stylesheet" href="styles.css">
     <script>
-        // JavaScript to fetch details from localStorage and display them
         window.onload = function() {
-            // Get data from localStorage
-            const name = localStorage.getItem('name');
-            const email = localStorage.getItem('email');
-            const phone = localStorage.getItem('phone');
-            const message = localStorage.getItem('message');
+            // Get query parameters from the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const name = decodeURIComponent(urlParams.get('name'));
+            const email = decodeURIComponent(urlParams.get('email'));
+            const phone = decodeURIComponent(urlParams.get('phone'));
+            const message = decodeURIComponent(urlParams.get('message'));
 
             // Display the details on the page
             document.getElementById('name').textContent = name;

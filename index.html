@@ -3,27 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Form - Dark Theme</title>
+    <title>Registration Form</title>
     <link rel="stylesheet" href="styles.css">
     <script>
-        // JavaScript to handle form submission and open a new page
         function handleSubmit(event) {
-            event.preventDefault(); // Prevent form from submitting to the server
+            event.preventDefault(); // Prevent form from submitting to server
 
             // Get values from the form fields
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const message = document.getElementById('message').value;
+            const name = encodeURIComponent(document.getElementById('name').value);
+            const email = encodeURIComponent(document.getElementById('email').value);
+            const phone = encodeURIComponent(document.getElementById('phone').value);
+            const message = encodeURIComponent(document.getElementById('message').value);
 
-            // Save details to localStorage
-            localStorage.setItem('name', name);
-            localStorage.setItem('email', email);
-            localStorage.setItem('phone', phone);
-            localStorage.setItem('message', message);
-
-            // Open a new page to display the submitted details
-            window.open('result.html', '_blank'); // Opens a new tab with result.html
+            // Redirect to result page and pass form data via URL query parameters
+            window.location.href = `result.html?name=${name}&email=${email}&phone=${phone}&message=${message}`;
         }
     </script>
 </head>
