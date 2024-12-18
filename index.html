@@ -5,11 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form - Dark Theme</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        // JavaScript to handle form submission and open a new page
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent form from submitting to the server
+
+            // Get values from the form fields
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+
+            // Save details to localStorage
+            localStorage.setItem('name', name);
+            localStorage.setItem('email', email);
+            localStorage.setItem('phone', phone);
+            localStorage.setItem('message', message);
+
+            // Open a new page to display the submitted details
+            window.open('result.html', '_blank'); // Opens a new tab with result.html
+        }
+    </script>
 </head>
 <body>
     <div class="container">
         <h1>Online Registration</h1>
-        <form id="registrationForm" action="submit.php" method="POST">
+        <form id="registrationForm" onsubmit="handleSubmit(event)">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" placeholder="e.g. John Doe" required>
